@@ -33,6 +33,8 @@ namespace JwtAuthentication.Controllers
             {
                 Email = model.Email,
                 UserName = model.Email,
+               // UserWeight = model.UserWeight,
+                //DeviceID = model.DeviceID,
                 SecurityStamp = Guid.NewGuid().ToString()
             };
             var result = await _userManager.CreateAsync(user, model.Password);
@@ -43,7 +45,8 @@ namespace JwtAuthentication.Controllers
             return Ok(new { Username = user.UserName });
         }
 
-        [Route("login")] // /login
+        // /login
+        [Route("login")] 
         [HttpPost]
         public async Task<ActionResult> Login([FromBody] LoginViewModel model)
         {

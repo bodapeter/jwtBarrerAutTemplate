@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using JwtAuthentication.Model;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,7 +12,15 @@ namespace JwtAuthentication.Data
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-        { }
+        { 
+        
+        }
+
+        public DbSet<User> Users { get; set; }
+        public DbSet<SensorData> SensorDatas { get; set; }
+        public DbSet<Device> Devices { get; set; }
+
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
